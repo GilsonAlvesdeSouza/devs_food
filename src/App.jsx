@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Container, Menu, PageBody } from "./AppStyled";
 import { Cart, MenuItem, PrivateRouter } from "./components";
-import HomeScreen from "./pages/HomeScreen";
-import Tela2Screen from "./pages/Tela2Screen";
-
+import { HomeScreen, Tela2Screen } from "./pages";
 
 const App = () => {
   const name = useSelector((state) => state.user.name);
