@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Container, Menu, PageBody } from "./AppStyled";
 import { MenuItem } from "./components";
-
 import HomeScreen from "./pages/HomeScreen";
 import Tela2Screen from "./pages/Tela2Screen";
 
-export default () => {
+
+const App = () => {
   const name = useSelector((state) => state.user.name);
 
   return (
@@ -34,3 +34,5 @@ export default () => {
     </BrowserRouter>
   );
 };
+
+export default App;
