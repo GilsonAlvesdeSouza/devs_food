@@ -17,7 +17,7 @@ function MenuItem({ icon, link }) {
     <LinkArea active={isActive} href={link} onClick={handleLinkClick}>
       <LinkIcon src={icon} />
     </LinkArea>
-  ); 
+  );
 }
 
 export default MenuItem;
