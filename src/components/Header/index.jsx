@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Container, Logo, SearchInput } from "./styled";
 
-function Header() {
-  const [inputActive, setInputActive] = useState(false);
+function Header({ search, onSearch }) {
+  const [inputActive, setInputActive] = useState(search === "" ? false : true);
 
   const handleInputOnFocus = () => {
     setInputActive(true);
   };
 
   const handleInputBlur = () => {
-    setInputActive(false);
+    if (search === "") {
+      setInputActive(false);
+    }
+  };
+
+  const handleInputSearchChange = (e) => {
+    onSearch(e.target.value);
   };
 
   return (
@@ -18,6 +24,8 @@ function Header() {
       <SearchInput
         active={inputActive}
         type={"text"}
+        value={search}
+        onChange={handleInputSearchChange}
         placeholder="Informe um produto"
         onFocus={handleInputOnFocus}
         onBlur={handleInputBlur}
