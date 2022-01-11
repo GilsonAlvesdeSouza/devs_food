@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactTooltip from "react-tooltip";
 import { useHistory } from "react-router-dom";
 import { Header, CategoryItem } from "../../components";
 import API from "../../helpers/API";
@@ -18,6 +19,7 @@ function HomeScreen() {
       if (json.error === "") {
         setCategories(json.result);
       }
+      ReactTooltip.rebuild();
     };
     getCategories();
   }, []);
@@ -45,7 +47,7 @@ function HomeScreen() {
             <CategoryItem
               data={{
                 id: "",
-                title: "Todas as categorias",
+                name: "Todas as categorias",
                 image: "/assets/food-and-restaurant.png",
               }}
               active={activeCategory}
