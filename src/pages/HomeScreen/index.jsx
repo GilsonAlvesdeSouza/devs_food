@@ -22,9 +22,16 @@ function HomeScreen() {
     getCategories();
   }, []);
 
+  useEffect(() => {}, [activeCategory]);
+
   const handleCategories = () => {
     return categories.map((item, key) => (
-      <CategoryItem key={`cat-${key}`} data={item} active={activeCategory}/>
+      <CategoryItem
+        key={`cat-${key}`}
+        data={item}
+        active={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
     ));
   };
 
@@ -42,6 +49,7 @@ function HomeScreen() {
                 image: "/assets/food-and-restaurant.png",
               }}
               active={activeCategory}
+              setActiveCategory={setActiveCategory}
             />
             {handleCategories()}
           </CategoryList>
