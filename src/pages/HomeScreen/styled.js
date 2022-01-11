@@ -5,5 +5,12 @@ export const Container = styled.div`
     padding: 15px;
 `;
 
-export const CategoryArea = styled.div``;
-export const CategoryList = styled.div``;
+export const CategoryArea = styled.div`
+    color: #FFF;
+    margin-top: 20px;
+    `;
+
+export const CategoryList = styled.div`
+    display: flex;
+    margin-top: 10px;
+`;

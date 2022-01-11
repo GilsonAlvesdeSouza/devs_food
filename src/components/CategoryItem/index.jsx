@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container } from './styled';
+import { Container, CategoryImage } from './styled';
 
-function CategoryItem() {
+function CategoryItem({data, active}) {
+    const {id, title, image} = data;
     return (
-        <Container>
-            
+        <Container active={active} id={id}>
+           <CategoryImage src={image}/> 
         </Container>
     );
 }

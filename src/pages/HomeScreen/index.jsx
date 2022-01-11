@@ -9,6 +9,8 @@ function HomeScreen() {
   const [headerSearch, setHeaderSearch] = useState("");
   const [categories, setCategories] = useState([]);
 
+  const [activeCategory, setActiveCategory] = useState("");
+
   useEffect(() => {
     let api = API();
     const getCategories = async () => {
@@ -20,6 +22,12 @@ function HomeScreen() {
     getCategories();
   }, []);
 
+  const handleCategories = () => {
+    return categories.map((item, key) => (
+      <CategoryItem key={`cat-${key}`} data={item} active={activeCategory}/>
+    ));
+  };
+
   return (
     <Container>
       <Header search={headerSearch} onSearch={setHeaderSearch} />
@@ -28,9 +36,14 @@ function HomeScreen() {
           Selecione uma categoria
           <CategoryList>
             <CategoryItem
-              title="Todas as categorias"
-              image="food-and-restaurant.png"
+              data={{
+                id: "",
+                title: "Todas as categorias",
+                image: "/assets/food-and-restaurant.png",
+              }}
+              active={activeCategory}
             />
+            {handleCategories()}
           </CategoryList>
         </CategoryArea>
       )}
