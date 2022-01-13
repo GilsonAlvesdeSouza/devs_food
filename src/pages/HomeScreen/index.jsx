@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
-import { useHistory } from "react-router-dom";
-import { Header, CategoryItem } from "../../components";
+import { Header, CategoryItem, ProductItem } from "../../components";
 import API from "../../helpers/API";
-import { Container, CategoryArea, CategoryList } from "./styled";
+import {
+  Container,
+  CategoryArea,
+  CategoryList,
+  ProductArea,
+  ProductList,
+} from "./styled";
 
 function HomeScreen() {
-  const history = useHistory();
   const [headerSearch, setHeaderSearch] = useState("");
   const [categories, setCategories] = useState([]);
-
   const [activeCategory, setActiveCategory] = useState("");
+  const [products, setProducts] = useState([]);
+  const api = API();
+
+  const getProducts = async () => {
+    const prods = await api.getProducts();
+    if (prods.error === "") {
+      setProducts(prods.result.data);
+    }
+  };
 
   useEffect(() => {
-    let api = API();
     const getCategories = async () => {
       const json = await api.getCategories();
       if (json.error === "") {
@@ -24,7 +35,9 @@ function HomeScreen() {
     getCategories();
   }, []);
 
-  useEffect(() => {}, [activeCategory]);
+  useEffect(() => {
+    getProducts();
+  }, [activeCategory]);
 
   const handleCategories = () => {
     return categories.map((item, key) => (
@@ -34,6 +47,12 @@ function HomeScreen() {
         active={activeCategory}
         setActiveCategory={setActiveCategory}
       />
+    ));
+  };
+
+  const handleProducts = () => {
+    return products.map((item, key) => (
+      <ProductItem key={`product-${key}`} data={item} />
     ));
   };
 
@@ -56,6 +75,11 @@ function HomeScreen() {
             {handleCategories()}
           </CategoryList>
         </CategoryArea>
+      )}
+      {products.length > 0 && (
+        <ProductArea>
+          <ProductList>{handleProducts()}</ProductList>
+        </ProductArea>
       )}
     </Container>
   );

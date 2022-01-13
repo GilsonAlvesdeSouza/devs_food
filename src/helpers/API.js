@@ -27,6 +27,10 @@ const API = () => {
         const json = await apiFetchGet("/categories");
         return json;
     },
+    getProducts: async () => {
+      const json = await apiFetchGet("/products");
+      return json;
+    }
   };
 };
 
