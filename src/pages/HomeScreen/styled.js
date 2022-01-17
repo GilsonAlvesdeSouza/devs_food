@@ -25,6 +25,22 @@ export const ProductList = styled.div`
   grid-gap: 15px;
 `;
 
-export const ProductPaginationArea = styled.div``;
+export const ProductPaginationArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0 0 0;
+  gap: 5px;
+`;
 
-export const ProductPaginationItem = styled.div``;
+export const ProductPaginationItem = styled.div`
+  background-color: ${({ activePage, current }) =>
+    activePage === current ? "#999" : "#fff"};
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+
+  :hover {
+    opacity: 0.8;
+  }
+`;

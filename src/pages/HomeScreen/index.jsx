@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import * as C from "../../components";
 import * as S from "./styled";
-import {API} from "../../helpers";
+import { API } from "../../helpers";
 
 function HomeScreen() {
   const [headerSearch, setHeaderSearch] = useState("");
@@ -11,7 +11,7 @@ function HomeScreen() {
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [activePage, setActivePage] = useState(0);
-  
+
   const api = API();
 
   const getProducts = async () => {
@@ -35,8 +35,9 @@ function HomeScreen() {
   }, []);
 
   useEffect(() => {
+    setProducts([]);
     getProducts();
-  }, [activeCategory]);
+  }, [activeCategory, activePage]);
 
   const handleCategories = () => {
     return categories.map((item, key) => (
@@ -53,6 +54,21 @@ function HomeScreen() {
     return products.map((item, key) => (
       <C.ProductItem key={`product-${key}`} data={item} />
     ));
+  };
+
+  const handlePaginationItem = () => {
+    return Array(8)
+      .fill(0)
+      .map((item, index) => (
+        <S.ProductPaginationItem
+          key={`product-${index}`}
+          activePage={activePage}
+          current={index + 1}
+          onClick={() => setActivePage(index + 1)}
+        >
+          {index + 1}
+        </S.ProductPaginationItem>
+      ));
   };
 
   return (
@@ -80,15 +96,11 @@ function HomeScreen() {
           <S.ProductList>{handleProducts()}</S.ProductList>
         </S.ProductArea>
       )}
-      {totalPages > 0 && 
-          <S.ProductPaginationArea>
-            {Array(totalPages).fill().map((item, index) => (
-              <S.ProductPaginationItem key={`product-${index}`}> 
-                {index+1}
-              </S.ProductPaginationItem>
-            ))}
-          </S.ProductPaginationArea>    
-      }
+      {totalPages > 0 && (
+        <S.ProductPaginationArea>
+          {handlePaginationItem()}
+        </S.ProductPaginationArea>
+      )}
     </S.Container>
   );
 }
