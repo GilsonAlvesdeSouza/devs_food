@@ -34,7 +34,7 @@ export const ProductPaginationArea = styled.div`
 
 export const ProductPaginationItem = styled.div`
   background-color: ${({ activePage, current }) =>
-    activePage === current ? "#999" : "#fff"};
+    activePage === current ? "#cdcbcf" : "#fff"};
   padding: 5px 10px;
   border-radius: 5px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);

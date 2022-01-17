@@ -4,6 +4,8 @@ import * as C from "../../components";
 import * as S from "./styled";
 import { API } from "../../helpers";
 
+let searchTimer = null;
+
 function HomeScreen() {
   const [headerSearch, setHeaderSearch] = useState("");
   const [categories, setCategories] = useState([]);
@@ -11,6 +13,7 @@ function HomeScreen() {
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [activePage, setActivePage] = useState(0);
+  const [activeSearch, setActiveSearch] = useState("");
 
   const api = API();
 
@@ -32,12 +35,21 @@ function HomeScreen() {
       ReactTooltip.rebuild();
     };
     getCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setProducts([]);
     getProducts();
-  }, [activeCategory, activePage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory, activePage, activeSearch]);
+
+  useEffect(() => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      setActiveSearch(headerSearch);
+    }, 2000);
+  }, [headerSearch]);
 
   const handleCategories = () => {
     return categories.map((item, key) => (
@@ -57,7 +69,7 @@ function HomeScreen() {
   };
 
   const handlePaginationItem = () => {
-    return Array(8)
+    return Array(totalPages)
       .fill(0)
       .map((item, index) => (
         <S.ProductPaginationItem
