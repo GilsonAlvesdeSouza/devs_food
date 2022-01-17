@@ -15,6 +15,7 @@ function HomeScreen() {
   const [activePage, setActivePage] = useState(1);
   const [activeSearch, setActiveSearch] = useState("");
   const [searchLength, setSearchLength] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(true);
 
   const api = API();
 
@@ -127,6 +128,9 @@ function HomeScreen() {
           {handlePaginationItem()}
         </S.ProductPaginationArea>
       )}
+      <C.Modal isOpen={isOpenModal} closeModal={setIsOpenModal}>
+        <h2>Conteúdo do modal</h2>
+      </C.Modal>
     </S.Container>
   );
 }
