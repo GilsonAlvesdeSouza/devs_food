@@ -5,6 +5,7 @@ import Header from "./Header";
 import CategoryItem from "./CategoryItem";
 import ProductItem from "./ProductItem";
 import Modal from "./Modal";
+import ModalProduct from "./ModalProduct";
 
 export {
   MenuItem,
@@ -14,4 +15,5 @@ export {
   CategoryItem,
   ProductItem,
   Modal,
+  ModalProduct
 };

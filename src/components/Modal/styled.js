@@ -12,22 +12,30 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
+export const ModalArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
 export const ModalBody = styled.div`
   background-color: #fff;
   border-radius: 5px;
   padding: 15px;
   box-shadow: 0px 0px 50px #000;
   max-height: 90vh;
-  max-width: 100vh;
+  max-width: 100vw;
   overflow: auto;
 `;
 
 export const BtnModal = styled.button`
-  float: right;
+  color: #fff;
   background: unset;
   border: unset;
   font-weight: bold;
+  margin-right: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
   :hover {
     color: #ff0000;
   }

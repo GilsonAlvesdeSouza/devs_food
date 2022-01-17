@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Container, ModalBody, BtnModal } from "./styled";
+import { Container, ModalBody, BtnModal,  ModalArea } from "./styled";
 
 const portalRoot = document.getElementById("portal-root");
 
@@ -10,19 +10,19 @@ function Modal({ children, isOpen, close }) {
   }
 
   const handleModalClick = (e) => {
-      if(e.target.classList.contains('modalBg')){
-          close(false);
-      }
+    if (e.target.classList.contains("modalBg")) {
+      close(false);
+    }
   };
 
   return ReactDOM.createPortal(
     <Container onClick={handleModalClick} className="modalBg">
-      <ModalBody>
+      <ModalArea>
         <BtnModal type="button" onClick={() => close(false)}>
           X
         </BtnModal>
-        {children}
-      </ModalBody>
+        <ModalBody>{children}</ModalBody>
+      </ModalArea>
     </Container>,
     portalRoot
   );
