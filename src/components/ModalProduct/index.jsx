@@ -9,14 +9,14 @@ import {
   ProductButtons,
 } from "./styled";
 
-function ModalProduct() {
+function ModalProduct({ data }) {
   return (
     <Container>
       <ProductArea>
-        <ProductPhoto src="" />
+        <ProductPhoto src={data.image} />
         <ProductInfoArea>
-          <ProductDetails>detalhes</ProductDetails>
-          <ProductQuantityArea></ProductQuantityArea>
+          <ProductDetails>{data.name}</ProductDetails>
+          <ProductQuantityArea>quantidade</ProductQuantityArea>
         </ProductInfoArea>
       </ProductArea>
       <ProductButtons></ProductButtons>

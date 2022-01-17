@@ -15,7 +15,8 @@ function HomeScreen() {
   const [activePage, setActivePage] = useState(1);
   const [activeSearch, setActiveSearch] = useState("");
   const [searchLength, setSearchLength] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [modalData, setModalData] = useState({});
 
   const api = API();
 
@@ -74,9 +75,14 @@ function HomeScreen() {
     ));
   };
 
+  const handleProductClick = (data) => {
+    setModalData(data);
+    setIsOpenModal(true);
+  };
+
   const handleProducts = () => {
     return products.map((item, key) => (
-      <C.ProductItem key={`product-${key}`} data={item} />
+      <C.ProductItem key={`product-${key}`} data={item} onClick={handleProductClick}/>
     ));
   };
 
@@ -128,8 +134,8 @@ function HomeScreen() {
           {handlePaginationItem()}
         </S.ProductPaginationArea>
       )}
-      <C.Modal isOpen={isOpenModal} close={setIsOpenModal}>
-        <C.ModalProduct />
+      <C.Modal isOpen={isOpenModal} close={setIsOpenModal} >
+        <C.ModalProduct data={modalData}/>
       </C.Modal>
     </S.Container>
   );

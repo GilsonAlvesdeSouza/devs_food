@@ -2,11 +2,12 @@ import React from "react";
 import * as St from "./styled";
 import { Format } from "../../helpers";
 
-function ProductItem({ data }) {
+function ProductItem({ data, onClick }) {
   const { image, name, price, ingredients } = data;
   const format = Format();
+
   return (
-    <St.Container>
+    <St.Container onClick={() => onClick(data)}>
       <St.ProductImgArea>
         <St.ProductImg src={image} />
       </St.ProductImgArea>
