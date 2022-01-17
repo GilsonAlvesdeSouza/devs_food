@@ -10,14 +10,16 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  `;
+`;
 
 export const ModalBody = styled.div`
-  width: 300px;
-  height: 300px;
   background-color: #fff;
   border-radius: 5px;
   padding: 15px;
+  box-shadow: 0px 0px 50px #000;
+  max-height: 90vh;
+  max-width: 100vh;
+  overflow: auto;
 `;
 
 export const BtnModal = styled.button`
@@ -26,7 +28,7 @@ export const BtnModal = styled.button`
   border: unset;
   font-weight: bold;
   cursor: pointer;
-  :hover{
-      color: red;
+  :hover {
+    color: #ff0000;
   }
 `;

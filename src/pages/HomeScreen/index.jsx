@@ -128,7 +128,7 @@ function HomeScreen() {
           {handlePaginationItem()}
         </S.ProductPaginationArea>
       )}
-      <C.Modal isOpen={isOpenModal} closeModal={setIsOpenModal}>
+      <C.Modal isOpen={isOpenModal} close={setIsOpenModal}>
         <h2>Conteúdo do modal</h2>
       </C.Modal>
     </S.Container>
