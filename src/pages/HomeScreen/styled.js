@@ -17,6 +17,7 @@ export const CategoryList = styled.div`
 
 export const ProductArea = styled.div`
   margin: 20px 0 20px 0;
+  color: #fff;
 `;
 
 export const ProductList = styled.div`

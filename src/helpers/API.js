@@ -27,8 +27,8 @@ const API = () => {
         const json = await apiFetchGet("/categories");
         return json;
     },
-    getProducts: async () => {
-      const json = await apiFetchGet("/products");
+    getProducts: async (options) => {
+      const json = await apiFetchGet("/products", options);
       return json;
     }
   };

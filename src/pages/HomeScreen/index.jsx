@@ -12,17 +12,28 @@ function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState("");
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
-  const [activePage, setActivePage] = useState(0);
+  const [activePage, setActivePage] = useState(1);
   const [activeSearch, setActiveSearch] = useState("");
+  const [searchLength, setSearchLength] = useState(false);
 
   const api = API();
 
   const getProducts = async () => {
-    const prods = await api.getProducts();
+    const prods = await api.getProducts({
+      category: activeCategory,
+      page: activePage,
+      search: activeSearch,
+    });
     if (prods.error === "") {
+      console.log(prods.result.data.length);
       setProducts(prods.result.data);
       setTotalPages(prods.result.pages);
       setActivePage(prods.result.page);
+      if (prods.result.data.length < 1) {
+        setSearchLength(true);
+      } else {
+        setSearchLength(false);
+      }
     }
   };
 
@@ -107,6 +118,9 @@ function HomeScreen() {
         <S.ProductArea>
           <S.ProductList>{handleProducts()}</S.ProductList>
         </S.ProductArea>
+      )}
+      {searchLength && (
+        <S.ProductArea>Nenhum resultado encontrado!</S.ProductArea>
       )}
       {totalPages > 0 && (
         <S.ProductPaginationArea>
