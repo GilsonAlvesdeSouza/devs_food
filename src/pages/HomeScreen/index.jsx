@@ -82,7 +82,11 @@ function HomeScreen() {
 
   const handleProducts = () => {
     return products.map((item, key) => (
-      <C.ProductItem key={`product-${key}`} data={item} onClick={handleProductClick}/>
+      <C.ProductItem
+        key={`product-${key}`}
+        data={item}
+        onClick={handleProductClick}
+      />
     ));
   };
 
@@ -134,8 +138,8 @@ function HomeScreen() {
           {handlePaginationItem()}
         </S.ProductPaginationArea>
       )}
-      <C.Modal isOpen={isOpenModal} close={setIsOpenModal} >
-        <C.ModalProduct data={modalData}/>
+      <C.Modal isOpen={isOpenModal} close={setIsOpenModal}>
+        <C.ModalProduct data={modalData} close={setIsOpenModal} />
       </C.Modal>
     </S.Container>
   );

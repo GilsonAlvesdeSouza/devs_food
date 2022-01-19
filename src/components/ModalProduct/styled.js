@@ -44,7 +44,7 @@ export const ProductQuantityArea = styled.div`
 export const ProductQuantity = styled.div`
   display: flex;
   align-items: center;
-  background-color: #0b4d0b;
+  background-color: #073c07;
   padding: 10px;
   border-radius: 10px;
 `;
