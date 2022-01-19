@@ -24,9 +24,9 @@ const CartReducer = (state = initialState, action) => {
       console.log(products);
 
       return { ...state, products };
-    /* trecho para limpar o carrinho
-      case "CLEAR_DATA": 
-      return initialState; */
+    // // trecho para limpar o carrinho
+    //   case "CLEAR_DATA": 
+    //   return initialState;
     default:
       break;
   }

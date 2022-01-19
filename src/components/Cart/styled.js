@@ -24,8 +24,11 @@ export const CartIcon = styled.img`
 `;
 
 export const CartText = styled.div`
+  flex: 1;
   color: #fff;
   font-size: 1.063rem;
 `;
 
-export const CartBody = styled.div``;
+export const CartBody = styled.div`
+  display: ${({ open }) => (!open ? "none" : "flex")};
+`;
