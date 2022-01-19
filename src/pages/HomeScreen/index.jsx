@@ -27,7 +27,6 @@ function HomeScreen() {
       search: activeSearch,
     });
     if (prods.error === "") {
-      console.log(prods.result.data.length);
       setProducts(prods.result.data);
       setTotalPages(prods.result.pages);
       setActivePage(prods.result.page);

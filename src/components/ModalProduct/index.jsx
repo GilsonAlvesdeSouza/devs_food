@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import * as S from "./styled";
 import { Format } from "../../helpers";
 
 function ModalProduct({ data, close }) {
   const format = Format();
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   const handleMinusQuantity = () => {
     if (quantity > 1) {
@@ -17,8 +19,10 @@ function ModalProduct({ data, close }) {
   };
 
   const handleAddToCart = () => {
-    // juntar as informações
-    // mandar as informações para o reducer
+    dispatch({
+      type: "ADD_PRODUCT",
+      payload: { data, quantity },
+    });
     close(false);
   };
 
