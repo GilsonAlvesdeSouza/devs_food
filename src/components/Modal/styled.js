@@ -20,8 +20,7 @@ export const ModalArea = styled.div`
 
 export const ModalBody = styled.div`
   background-color: #fff;
-  border-radius: 5px;
-  padding: 15px;
+  border-radius: 10px;
   box-shadow: 0px 0px 50px #000;
   max-height: 90vh;
   max-width: 100vw;

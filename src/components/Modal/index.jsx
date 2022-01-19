@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Container, ModalBody, BtnModal,  ModalArea } from "./styled";
+import { Container, ModalBody, BtnModal, ModalArea } from "./styled";
 
 const portalRoot = document.getElementById("portal-root");
 
