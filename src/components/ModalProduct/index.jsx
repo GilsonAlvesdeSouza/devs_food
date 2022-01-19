@@ -16,6 +16,12 @@ function ModalProduct({ data, close }) {
     setQuantity(quantity + 1);
   };
 
+  const handleAddToCart = () => {
+    // juntar as informações
+    // mandar as informações para o reducer
+    close(false);
+  };
+
   return (
     <S.Container>
       <S.ProductArea>
@@ -52,7 +58,11 @@ function ModalProduct({ data, close }) {
         >
           Cancelar
         </S.ProductButton>
-        <S.ProductButton font_size={1.375} font_weight="bold">
+        <S.ProductButton
+          font_size={1.375}
+          font_weight="bold"
+          onClick={handleAddToCart}
+        >
           Adicionar ao Carrinho
         </S.ProductButton>
       </S.ProductButtons>
