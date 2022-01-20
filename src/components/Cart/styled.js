@@ -70,6 +70,7 @@ export const ProductQuantityIcon = styled.img`
   width: 13px;
   height: auto;
   margin: 5px;
+  cursor: pointer;
 `;
 
 export const ProductText = styled.div`

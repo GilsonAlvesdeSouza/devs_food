@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Format } from "../../helpers";
 
 import * as S from "./styled";
 
 function Cart() {
+  const dispatch = useDispatch();
   const format = Format();
   const products = useSelector((state) => state.cart.products);
   const [cartIsOpen, setCartIsOpen] = useState(true);
@@ -21,8 +23,14 @@ function Cart() {
     }
   };
 
-  const handleProductChange = (index, operation) => {
-    alert(`${index} === ${operation}`);
+  const handleProductChange = (key, operation) => {
+    dispatch({
+      type: 'CHANGE_QUANTITY_PRODUCT',
+      payload: {
+        key,
+        operation,
+      }
+    });
   };
 
   const handleProductsList = () => {

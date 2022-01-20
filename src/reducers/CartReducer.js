@@ -6,9 +6,9 @@ const initialState = {
 };
 
 const CartReducer = (state = initialState, action) => {
+  let products = [...state.products];
   switch (action.type) {
     case "ADD_PRODUCT":
-      let products = [...state.products];
       let id = action.payload.data.id;
       let index = products.findIndex((item) => item.id === id);
 
@@ -20,13 +20,28 @@ const CartReducer = (state = initialState, action) => {
           quantity: action.payload.quantity,
         });
       }
-
-      console.log(products);
-
       return { ...state, products };
-    // // trecho para limpar o carrinho
-    //   case "CLEAR_DATA": 
-    //   return initialState;
+    case "CHANGE_QUANTITY_PRODUCT":
+      let indexChange = action.payload.key;
+      if (products[indexChange]) {
+        switch (action.payload.operation) {
+          case "-":
+            products[indexChange].quantity--;
+            if (products[indexChange].quantity <= 0) {
+              products = products.filter(
+                (item, index) => index !== indexChange
+              );
+            }
+            break;
+          case "+":
+            products[indexChange].quantity++;
+            break;
+
+          default:
+            break;
+        }
+      }
+      return { ...state, products };
     default:
       break;
   }
