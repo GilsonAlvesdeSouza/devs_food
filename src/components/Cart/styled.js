@@ -11,7 +11,7 @@ export const CartArea = styled.div`
 
 export const CartHeader = styled.div`
   display: flex;
-  width: 290px;
+  width: 350px;
   height: 50px;
   align-items: center;
   cursor: pointer;
@@ -30,7 +30,7 @@ export const CartText = styled.div`
 `;
 
 export const CartBody = styled.div`
-  display: ${({ open }) => (!open ? "none" : "flex")};
+  display: ${({ open }) => (!open ? "none" : "block")};
   color: #fff;
 `;
 
@@ -61,4 +61,19 @@ export const ProductPrice = styled.div`
   font-size: 0.813rem;
 `;
 
-export const ProductQuantityArea = styled.div``;
+export const ProductQuantityArea = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ProductQuantityIcon = styled.img`
+  width: 13px;
+  height: auto;
+  margin: 5px;
+`;
+
+export const ProductText = styled.div`
+  font-size: 0.813rem;
+  font-weight: bold;
+  margin: 0 5px;
+`;

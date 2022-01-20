@@ -21,6 +21,10 @@ function Cart() {
     }
   };
 
+  const handleProductChange = (index, operation) => {
+    alert(`${index} === ${operation}`);
+  };
+
   const handleProductsList = () => {
     return products.map((item, key) => (
       <S.ProductItem key={`list-prod${key}`}>
@@ -29,7 +33,17 @@ function Cart() {
           <S.ProductName>{item.name}</S.ProductName>
           <S.ProductPrice>{format.currency(item.price)}</S.ProductPrice>
         </S.ProductInfoArea>
-        <S.ProductQuantityArea>{item.quantity}</S.ProductQuantityArea>
+        <S.ProductQuantityArea>
+          <S.ProductQuantityIcon
+            src="/assets/minus.png"
+            onClick={() => handleProductChange(key, "-")}
+          />
+          <S.ProductText>{item.quantity}</S.ProductText>
+          <S.ProductQuantityIcon
+            src="/assets/plus.png"
+            onClick={() => handleProductChange(key, "+")}
+          />
+        </S.ProductQuantityArea>
       </S.ProductItem>
     ));
   };
